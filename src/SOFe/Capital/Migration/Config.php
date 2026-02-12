@@ -49,8 +49,10 @@ final class Config implements Singleton, FromContext, ConfigInterface {
 
             Possible values:
             - economyapi
+            - simpleeconomy
             EOT)) {
             "economyapi" => self::parseEconomyApiSource($sourceConfig),
+            "simpleeconomy" => SimpleEconomySource::parse($sourceConfig),
             default => $migration->setValueAnd("source", "economyapi", "Invalid source plugin", fn() => self::parseEconomyApiSource($sourceConfig)),
         };
 
